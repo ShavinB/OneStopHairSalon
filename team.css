@@ -1,0 +1,133 @@
+/* --- GLOBAL & HERO --- */
+body { margin: 0; font-family: 'Montserrat', sans-serif; }
+
+.team-hero {
+    position: relative;
+    background: url('hero-background.webp') no-repeat center center/cover;
+    height: 60vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
+}
+
+.team-hero .container { position: relative; z-index: 2; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; color: white; }
+.gold-text { color: #d4a373; }
+.short-divider.center { width: 60px; height: 3px; background: #d4a373; margin: 20px auto; }
+
+/* --- FLOATING BACK TO TOP ARROW --- */
+/* --- MOBILE FIX FOR BACK TO TOP --- */
+.back-to-top {
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    width: 50px !important;
+    height: 50px !important;
+    background-color: #1a1a1a !important;
+    border: 2px solid #d4a373 !important;
+    color: #d4a373 !important;
+    border-radius: 50% !important;
+    z-index: 999999 !important; /* Forces it to stay on top of all images */
+    
+    /* Center the icon */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    
+    /* Initial state */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    text-decoration: none;
+}
+
+/* This is the class the JavaScript will toggle */
+.back-to-top.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* iPad and Tablet adjustment */
+@media (max-width: 1024px) {
+    .back-to-top {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 55px !important; /* Larger for touch screens */
+        height: 55px !important;
+    }
+}
+
+/* --- CAROUSEL SECTION --- */
+.stylist-carousel-section { padding: 60px 0 100px; background: #ffffff; width: 100%; overflow: hidden; }
+.carousel-main-wrapper { position: relative; max-width: 1800px; margin: 0 auto; }
+
+/* TABLET & MOBILE (Slide Mode) */
+@media (max-width: 1024px) {
+    .carousel-container {
+        width: 100%; display: flex; overflow-x: auto;
+        scroll-snap-type: x mandatory; scrollbar-width: none; padding: 20px 0;
+    }
+    #stylistCarousel { display: flex; padding-left: calc(50% - 160px); padding-right: calc(50% - 160px); gap: 20px; }
+    .review-card { min-width: 320px; max-width: 320px; scroll-snap-align: center; flex-shrink: 0; }
+    
+    .nav-btn {
+        display: flex; position: absolute; top: 50%; transform: translateY(-50%);
+        background: #1a1a1a; color: white; width: 45px; height: 45px; border-radius: 50%;
+        z-index: 10; border: 1px solid #d4a373; align-items: center; justify-content: center;
+    }
+    .nav-btn.prev { left: 10px; }
+    .nav-btn.next { right: 10px; }
+}
+
+/* DESKTOP (Single Row Mode) */
+@media (min-width: 1025px) {
+    .carousel-container { overflow: visible; display: flex; justify-content: center; }
+    #stylistCarousel { display: flex; justify-content: center; gap: 20px; padding: 0 20px; }
+    .review-card { min-width: 280px; max-width: 300px; }
+    .nav-btn { display: none !important; }
+}
+
+/* CARD STYLING */
+.review-card {
+    background: white; padding: 40px 20px; border: 1px solid #eee; border-radius: 8px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.stylist-img-container { width: 180px; height: 180px; margin-bottom: 25px; border-radius: 50%; overflow: hidden; border: 3px solid #d4a373; }
+.stylist-img-container img { width: 100%; height: 100%; object-fit: cover; }
+.stylist-title-gold { color: #d4a373 !important; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+
+/* --- FOOTER (V1 Style with Phone/Location) --- */
+footer { padding: 50px 0 30px; background-color: #1a1a1a; color: #ffffff; text-align: center; border-top: 1px solid #333; }
+.footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; }
+.footer-top-info { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 25px; }
+.footer-logo img { height: 60px; width: auto; }
+.footer-contact-row { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
+.info-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+.info-item i { color: #d4a373; }
+.info-item a { color: #fff; text-decoration: none; }
+.social-links { display: flex; gap: 25px; margin-bottom: 20px; }
+.social-links a { color: #fff; font-size: 1.4rem; }
+.footer-bottom p { font-size: 0.75rem; color: #666; }
+
+/* --- ANIMATIONS --- */
+.book-appointment-btn {
+    position: relative; overflow: hidden; display: inline-block; background: #d4a373; color: #fff !important;
+    padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none;
+    animation: grow-and-glow 2s infinite ease-in-out;
+}
+@keyframes grow-and-glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+@media (max-width: 768px) {
+    .footer-contact-row { flex-direction: column; gap: 12px; }
+    .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
